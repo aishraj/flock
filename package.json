@@ -1,0 +1,15 @@
+{
+  "name": "boids",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^2.3.8",
+    "vite-plugin-wasm-pack": "^0.1.5"
+  },
+  "scripts": {
+    "wasm": "wasm-pack build ./flock --target web",
+    "dev": "yarn wasm && vite",
+    "build": "yarn wasm && vite build"
+  }
+}

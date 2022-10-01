@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boids</title>
+    <script type="module" src="/src/index.ts"></script>
+    <style>
+	body
+	{
+	  margin: 0;
+	  padding: 0;
+	  display: flex;
+	}
+
+	canvas
+	{
+	  display: block;
+	}
+
+	.boids-wrapper
+	{
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	.boids-wrapper canvas
+	{
+	  width: 100%;
+	  height: 100%;
+	}
+
+	.boids-wrapper canvas:focus
+	{
+	  outline: none;
+	}
+
+	.boids-controls
+	{
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  display: flex;
+	  justify-content: space-evenly;
+	  align-items: center;
+	  
+	}
+
+	.boids-controls button
+	{
+	  font-size: 2rem;
+	  padding: 1rem;
+	  margin: 0.5rem;
+	}
+
+	.control label{
+		display: block;
+		padding: 0.5rem;
+	}
+    </style>
+  </head>
+  <body>
+    <div class="boids-wrapper" id="boids-wrapper">
+      <canvas id="boids-canvas" width="150" height="150"></canvas>
+      <div class="boids-controls">
+      	<div id="boids-max-speed" class="control">
+      	  <label for="boids-speed-multiplier">⛔</label>
+      	  <input type="range" min="0.1" max="12" value="3" id="boids-max-speed-range" />
+      	</div>
+      	<div id="boids-neighbourhood-radius" class="control">
+      	  <label for="boids-neighbourhood-radius">⭕</label>
+      	  <input type="range" min="20" max="500" value="100" id="boids-neighbourhood-radius-range" />
+      	</div>
+      	<div id="boids-max-force" class="control">
+      	  <label for="boids-max-force">🚧</label>
+      	  <input type="range" min="0.1" max="5" value="0.1" id="boids-max-force-range" />
+      	</div>
+      	<div id="boids-separation-weight" class="control">
+      	  <label for="boids-separation-weight">💔</label>
+      	  <input type="range" min="0" max="5" value="0.5" id="boids-separation-weight-range" />
+      	</div>
+      	<div id="boids-alignment-weight" class="control">
+      	  <label for="boids-alignment-weight">↗️</label>
+      	  <input type="range" min="0" max="5" value="0.3" id="boids-alignment-weight-range" />
+      	</div>
+      	<div id="boids-cohesion-weight" class="control">
+      	  <label for="boids-cohesion-weight">🔗</label>
+      	  <input type="range" min="0" max="5" value="0.5" id="boids-cohesion-weight-range" />
+      	</div>
+     </div>
+
+    </div>
+ </body>
+</html>
