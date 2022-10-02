@@ -10,6 +10,7 @@
   "scripts": {
     "wasm": "wasm-pack build ./flock --target web",
     "dev": "yarn wasm && vite",
-    "build": "yarn wasm && vite build"
+    "buildall": "yarn wasm && vite build",
+    "build": "vite build"
   }
 }

@@ -37,19 +37,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Install wasm pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+        run: |
+          curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - name: Set shell path
-        run: mv /home/runner/.cargo/bin/wasm-pack /opt/bin
-      - name: Echo path to output
-        run: echo $GITHUB_PATH
-      
-      - uses: borales/actions-yarn@v3.0.0
+        run: echo "/home/runner/.cargo/bin" >> $GITHUB_PATH
+      - name: Build wasm artifacts
+        run: |
+            wasm-pack build ./flock --target web
+      - uses: actions/setup-node@v3
         with:
-          cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: build # will run `yarn build` command
-      
+          node-version: 16
+      - name: Install deps
+        run: npm install
+      - name: Build
+        run: npm run build
+
   deploy:
     needs: build
     environment:
@@ -69,3 +71,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
