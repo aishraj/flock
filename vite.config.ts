@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import wasmPack from "vite-plugin-wasm-pack";
 
 export default defineConfig({
-  base: "/experiments/boids",
+  base: "/flock",
   build: {
     minify: false,
   },
