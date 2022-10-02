@@ -40,6 +40,8 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - name: Set shell path
         run: echo "/home/runner/.cargo/bin/wasm-pack" >> $GITHUB_PATH
+      - name: Echo path to output
+        run: echo $GITHUB_PATH
       
       - uses: borales/actions-yarn@v3.0.0
         with:
