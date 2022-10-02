@@ -39,7 +39,7 @@ jobs:
       - name: Install wasm pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - name: Set shell path
-        run: echo "/home/runner/.cargo/bin/wasm-pack" >> $GITHUB_PATH
+        run: mv /home/runner/.cargo/bin/wasm-pack /opt/bin
       - name: Echo path to output
         run: echo $GITHUB_PATH
       
@@ -50,11 +50,6 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       
-      # Update apt cache and install 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
   deploy:
     needs: build
     environment:
